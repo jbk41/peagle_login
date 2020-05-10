@@ -4,34 +4,33 @@ import "antd/dist/antd.css";
 
 const layout = {
   labelCol: {
-    span: 8,
+    span: 24,
   },
   wrapperCol: {
-    span: 16,
+    span: 24,
   },
 }
 const tailLayout = {
   wrapperCol: {
-    offset: 8,
-    span: 16,
+    span: 24,
   },
 }
 
 
 
 class ForgotPasswordPage extends React.Component {
-    
+
     state = {
         email: 'root'
     }
-    
+
     onFinish = values => {
         this.setState({
             email: values.email
         })
         console.log(this.state.email)
     }
-    
+
     onFinishFailed = errorInfo => {
         console.log('Failed:', errorInfo);
     };
@@ -46,7 +45,7 @@ class ForgotPasswordPage extends React.Component {
                 }}
                 onFinish={this.onFinish}
                 onFinishFailed={this.onFinishFailed}
-                    
+
             >
                 <Form.Item
                         label="Email"
@@ -60,7 +59,7 @@ class ForgotPasswordPage extends React.Component {
                 >
                     <Input />
                 </Form.Item>
-            
+
                 <Form.Item {...tailLayout}>
                     <Button type="primary" htmlType="submit">
                         Submit
@@ -71,5 +70,5 @@ class ForgotPasswordPage extends React.Component {
         )
     }
 }
-                           
+
 export default ForgotPasswordPage;

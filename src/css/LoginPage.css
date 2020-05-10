@@ -1,0 +1,6 @@
+.container {
+  display: grid;
+  height: 100vh;
+  grid-gap: 10px;
+  padding: 10px;
+}

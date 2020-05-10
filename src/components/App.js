@@ -1,5 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
+import { Row, Col, Divider } from 'antd';
 import LoginPage from './LoginPage';
 import FPPage from './FPPage';
 
