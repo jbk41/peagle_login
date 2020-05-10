@@ -23,29 +23,39 @@ const tailLayout = {
 
 
 class LoginPage extends React.Component {
-    
+
     state = {
         username: "root",
-        password: "",
-        loggedIn: false
+        password: "pass",
     }
-    
 
-    
+
     onFinish = values => {
+      console.log('Success:', values);
+      this.setState({
+          username: values.username,
+          password: values.password
+      });
+    };
+
+    onChangeUsername = e => {
         this.setState({
-            username: values.username,
-            password: values.password
+            username: e.target.value
         });
-        console.log('hi');
         console.log(this.state.username);
+    }
+
+    onChangePassword = e => {
+        this.setState({
+            password: e.target.password
+        });
         console.log(this.state.password);
     }
-    
+
     onFinishFailed = errorInfo => {
         console.log('Failed:', errorInfo);
     };
-    
+
     render() {
         return (
             <Form
@@ -63,8 +73,9 @@ class LoginPage extends React.Component {
                         message: 'Username required.',
                     },
                     ]}
+                    onChange={this.onChangeUsername}
                 >
-                        <Input />
+                    <Input />
                 </Form.Item>
 
                 <Form.Item
@@ -76,8 +87,9 @@ class LoginPage extends React.Component {
                     message: 'Password required.',
                     },
                     ]}
+                    onChange={this.onChangePassword}
                 >
-                    <Input.Password />
+                    <Input.Password/>
                 </Form.Item>
 
                 <Form.Item {...tailLayout}>
