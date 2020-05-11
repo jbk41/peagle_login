@@ -1,72 +1,22 @@
 import React from 'react';
-import { Form, Input, Button} from 'antd';
+import {BrowserRouter, Route, Link} from 'react-router-dom';
+import ForgotPassword from './FP';
+import { Row, Col, Divider } from 'antd';
+import '../css/Landing.css';
 import "antd/dist/antd.css";
-
-const layout = {
-  labelCol: {
-    span: 24,
-  },
-  wrapperCol: {
-    span: 24,
-  },
-}
-const tailLayout = {
-  wrapperCol: {
-    span: 24,
-  },
-}
-
 
 
 class ForgotPasswordPage extends React.Component {
-
-    state = {
-        email: 'root'
-    }
-
-    onFinish = values => {
-        this.setState({
-            email: values.email
-        })
-        console.log(this.state.email)
-    }
-
-    onFinishFailed = errorInfo => {
-        console.log('Failed:', errorInfo);
-    };
-
-    render (){
+    render () {
         return (
-            <Form
-                {...layout}
-                name="basic"
-                initialValues={{
-                remember: true,
-                }}
-                onFinish={this.onFinish}
-                onFinishFailed={this.onFinishFailed}
+            <div class="container">
+                <Row  justify="center" align="middle">
+                    <Col xs={{span:20, offset: 0}} sm={{span:16, offset: 0}} md={{span:11, offset: 0}} lg={{span:9, offset: 10}} xl={{span:7, offset: 10}}>
+                        <ForgotPassword />
+                    </Col>
+                </Row>
+            </div>
 
-            >
-                <Form.Item
-                        label="Email"
-                        name="email"
-                        rules={[
-                        {
-                            required: true,
-                            message: 'Email required.',
-                        },
-                        ]}
-                >
-                    <Input />
-                </Form.Item>
-
-                <Form.Item {...tailLayout}>
-                    <Button type="primary" htmlType="submit">
-                        Submit
-                    </Button>
-                </Form.Item>
-
-            </Form>
         )
     }
 }

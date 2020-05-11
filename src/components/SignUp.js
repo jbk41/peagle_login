@@ -23,21 +23,26 @@ const tailLayout = {
 
 
 
-class Login extends React.Component {
+class SignUp extends React.Component {
 
     state = {
         username: "root",
+        email: "email",
         password: "pass",
+        passwordV: "passV"
     }
 
 
     onFinish = values => {
       this.setState({
           username: values.username,
-          password: values.password
+          email: values.email,
+          password: values.password,
+          passwordV: values.passwordV
       });
-      console.log(this.state.username);
-      console.log(this.state.password);
+      if (this.state.password !== this.state.passwordV){
+          alert("Passwords must match!");
+      }
     };
 
     onChangeUsername = e => {
@@ -47,11 +52,24 @@ class Login extends React.Component {
         console.log(this.state.username);
     }
 
+    onChangeEmail = e => {
+        this.setState({
+            username: e.target.value
+        });
+        console.log(this.state.email);
+    }
+
     onChangePassword = e => {
         this.setState({
             password: e.target.value
         });
         console.log(this.state.password);
+    }
+    onChangePasswordV = e => {
+        this.setState({
+            passwordV: e.target.value
+        });
+        console.log(this.state.passwordV);
     }
 
     onFinishFailed = errorInfo => {
@@ -63,8 +81,8 @@ class Login extends React.Component {
             <>
 
             <div>
-                <p class="maintext">Welcome to Peagle.</p>
-                <p class="secondarytext">Login with your email or username.</p>
+                <p class="maintext">Welcome to Peagle</p>
+                <p class="secondarytext">Sign up with your information below.</p>
             </div>
 
             <Form
@@ -84,7 +102,21 @@ class Login extends React.Component {
                     onChange={this.onChangeUsername}
 
                 >
-                    <Input placeholder='Username or email'/>
+                    <Input placeholder='Username'/>
+                </Form.Item>
+
+                <Form.Item
+                    name="email"
+                    rules={[
+                    {
+                        required: true,
+                        message: 'Email required.',
+                    },
+                    ]}
+                    onChange={this.onChangeEmail}
+
+                >
+                    <Input placeholder='Email'/>
                 </Form.Item>
 
                 <Form.Item
@@ -101,27 +133,35 @@ class Login extends React.Component {
                     <Input.Password placeholder='Password' class="form-input"/>
                 </Form.Item>
 
+                <Form.Item
+                    name="passwordV"
+                    rules={[
+                    {
+                    required: true,
+                    message: 'Password verification required.',
+                    },
+                    ]}
+                    onChange={this.onChangePasswordV}
+
+                >
+                    <Input.Password placeholder='Verify Password' class="form-input"/>
+                </Form.Item>
+
                 <Form.Item {...tailLayout}>
                     <div class="tail">
                         <Space>
                             <Button type="primary" htmlType="submit" size="medium"  shape="round" class="submit-button">
-                                Login
+                                Sign Up!
                             </Button>
-                            <Link to="/reset-password">
-                                Forgot Password?
-                            </Link>
+
                         </Space>
                     </div>
                 </Form.Item>
             </Form>
-            <div>
-                <p>
-                    Need an account? Sign up <Link to="/signup">here!</Link>
-                </p>
-            </div>
+
             </>
         )
     }
 }
 
-export default Login;
+export default SignUp;
