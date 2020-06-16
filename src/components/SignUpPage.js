@@ -3,11 +3,16 @@ import SignUp from './SignUp';
 import { Row, Col, Divider } from 'antd';
 import '../css/Landing.css';
 import "antd/dist/antd.css";
+import {ReactComponent as Logo} from '../assets/logo.svg'
 
 
 class SignUpPage extends React.Component {
     render () {
         return (
+            <>
+            <div class='logo-container'>
+                <Logo />
+            </div>
             <div class="container">
                 <Row  justify="center" align="middle">
                     <Col xs={{span:20, offset: 0}} sm={{span:16, offset: 0}} md={{span:11, offset: 0}} lg={{span:9, offset: 10}} xl={{span:7, offset: 10}}>
@@ -15,6 +20,7 @@ class SignUpPage extends React.Component {
                     </Col>
                 </Row>
             </div>
+            </>
         )
     }
 }

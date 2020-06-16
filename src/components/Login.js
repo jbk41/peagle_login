@@ -104,9 +104,11 @@ class Login extends React.Component {
                 <Form.Item {...tailLayout}>
                     <div class="tail">
                         <Space>
-                            <Button type="primary" htmlType="submit" size="medium"  shape="round" class="submit-button">
-                                Login
-                            </Button>
+                            <Link to='user-profile'>
+                                <Button type="primary" htmlType="submit" size="medium"  shape="round" class="submit-button">
+                                    Login
+                                </Button>
+                            </Link>
                             <Link to="/reset-password">
                                 Forgot Password?
                             </Link>

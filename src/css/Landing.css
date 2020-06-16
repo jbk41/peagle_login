@@ -17,6 +17,39 @@
   height: 95vh;
   grid-gap: 10px;
   padding: 10px;
+  border-color: red;
+  border-style: solid;
+}
+/*
+.logo-container {
+  display: block;
+  position:absolute;
+  top: 160px;
+  left: 150px;
+  width: 75%;
+  height: 100%;
+  margin: auto;
+  justify-content: center
+}
+*/
+.logo-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    height: 95vh;
+    grid-gap: 10px;
+    padding: 10px;
+    border-color: blue;
+    border-style: solid;
+}
+
+.fp-container {
+    display: grid;
+    height: 100vh;
+    margin: auto;
+    background: #f0f0f0;
+
 }
 
 .button-container {
