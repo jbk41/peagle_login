@@ -1,26 +1,32 @@
-import React, {useState} from 'react';
-import { Row, Col, Divider, Layout } from 'antd';
-import { Form, Input, Button, Checkbox, DatePicker, Drawer, Descriptions, Card } from 'antd';
+import React from 'react';
+import { Row, Col, Layout } from 'antd';
+import { Form, Input, Button, DatePicker, Drawer, Descriptions, Card } from 'antd';
 import moment from 'moment';
-import Nav from './Nav';
 import "antd/dist/antd.css";
 import {EditOutlined} from '@ant-design/icons';
+import UserProfileInfoContext from '../../context/UserProfileInfoContext';
 
-
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Footer } = Layout;
 
 class ProfileContent extends React.Component {
 
-    state = {
-        userID: 'jbkr1',
-        firstName: 'justin',
-        lastName: 'kim',
-        email: 'jbk41@duke.adu',
-        doB: '12/12/1912',
-        org: 'Duke',
-        headshot: 'google.com',
-        drawerVisible: false
+    static contextType = UserProfileInfoContext;
 
+    state = {
+        // userID: 'jbkr1',
+        // firstName: 'justin',
+        // lastName: 'kim',
+        // email: 'jbk41@duke.adu',
+        // doB: '12/12/1912',
+        // org: 'Duke',
+        headshot: 'google.com',
+        drawerVisible: false,
+        userID: this.context.userID,
+        firstName: this.context.firstName,
+        lastName: this.context.lastName,
+        email: this.context.email,
+        doB: this.context.doB,
+        org: this.context.org
     }
     dateFormat = 'MM-DD-YYYY';
 
@@ -35,7 +41,8 @@ class ProfileContent extends React.Component {
             doB: values.birthday.format(this.dateFormat),
             org: values.organization
         });
-        console.log(values);
+
+        console.log(this.context);
         this.onClose();
     }
 
@@ -182,9 +189,13 @@ class ProfileContent extends React.Component {
 
 
         render () {
+
+
             return (
+
                 <>
                 <div class="fp-container">
+
                     <Header style={{backgroundColor: "#7184dc"}} layout="inline">
                         <Row justify="end" gutter={16}>
                             <Col>
@@ -203,12 +214,22 @@ class ProfileContent extends React.Component {
                     <Content>
                         <Row  justify="center" align="middle">
                             <Col>
-                                {this.profileView()}
+                                    userID: this.state.userID,
+                                    firstName: this.state.firstName,
+                                    lastName: this.state.lastName,
+                                    email: this.state.email,
+                                    doB: this.state.doB,
+                                    org: this.state.org
+                                }}>
+                                    {this.profileView()}
+
                             </Col>
                         </Row>
                     </Content>
                 </div>
-                {this.profileForm()}
+
+
+                    {this.profileForm()}
                 </>
             )
         }

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Form, Input, Button, Checkbox } from 'antd';
-import { Row, Col, Divider, Space } from 'antd';
-import {BrowserRouter, Route, Link} from 'react-router-dom';
+import { Form, Input, Button, Space } from 'antd';
+import { Link} from 'react-router-dom';
+import UserProfileInfoContext from '../context/UserProfileInfoContext';
 import "../css/Landing.css";
 import "antd/dist/antd.css";
 
@@ -24,10 +24,27 @@ const tailLayout = {
 
 
 class Login extends React.Component {
+    static contextType = UserProfileInfoContext;
 
     state = {
         username: "root",
         password: "pass",
+    }
+
+    loginAccount = (loginID, password) => {
+        // blah blah somehow gets stuff from user info endpoint
+        // it returns some profile object
+
+        const profile = {
+            userID: 'diffJbk',
+            firstName: 'Justin Diff',
+            lastName: 'asd',
+            email: 'asfdsaf@duke.adu',
+            doB: '1/1/2000',
+            org: 'DUKE UNIVERSITY'
+        }
+
+        this.context.onProfileUpdate(profile);
     }
 
 
@@ -36,6 +53,8 @@ class Login extends React.Component {
           username: values.username,
           password: values.password
       });
+
+      this.loginAccount(values.username, values.password);
       console.log(this.state.username);
       console.log(this.state.password);
     };
